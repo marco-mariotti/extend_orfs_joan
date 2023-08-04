@@ -1,9 +1,19 @@
-# extend_orfs
+# orf_tools
 
-## What does extend_orfs do?
-It takes advantage of the PyRanges package (Stovner and Sætrom, 2019) and uses 
-several of its functions to efficiently parse the sequence of thousands of
-transcripts and return its extended ORFs.
+Package to manipulate open reading frames (ORFs).
 
-## Using extend_orfs
-You can install extend_orfs using PyPI or download it directly from GitHub.
+Dependent on pandas.
+
+As of today, one function available: extend_orfs()
+See its docstring in the code
+
+## Authors
+Joan Pallares started the extend_orfs.
+Marco Mariotti later optimized it.
+
+## Installation
+conda install -c conda-forge -c bioconda -c mmariotti orf_tools
+
+Or:
+
+pip install orf_tools
