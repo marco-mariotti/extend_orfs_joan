@@ -158,7 +158,9 @@ def extend_orfs(
                 lambda x: find_rightmost_stop(x, stops)
             )
             found_stop_selector = selector.copy()  # made to index pup
-            found_stop_selector[found_stop_selector] = z != -1
+            to_fill = (z != -1)
+            to_fill= to_fill.values[0] if len(to_fill)==1 else to_fill
+            found_stop_selector[found_stop_selector] = to_fill
             pup.loc[found_stop_selector, "__up_stop_dist"] = (
                 z[z != -1] + ic * chunk_size
             )
@@ -168,7 +170,9 @@ def extend_orfs(
                 #  record their max extension as up_stop_dist and __up_start_dist so they are considered whether starts was provided or not
                 # btw this means these intervals can be identified by looking at rows with __up_start_dist == __up_stop_dist
                 no_stop_off_bounds = found_stop_selector.copy()
-                no_stop_off_bounds[no_stop_off_bounds] = z == -1
+                to_fill = (z == -1)
+                to_fill = to_fill.values[0] if len(to_fill)==1 else to_fill
+                no_stop_off_bounds[no_stop_off_bounds] = to_fill
                 pup.loc[no_stop_off_bounds, "__up_stop_dist"] = (
                     pup.loc[no_stop_off_bounds, "End"]
                     - pup.loc[no_stop_off_bounds, "Start"]
